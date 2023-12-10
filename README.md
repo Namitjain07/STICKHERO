@@ -155,7 +155,25 @@ The `StickHeroGameTest` class contains the test cases for the StickHeroGame clas
 
 ### Contributing
 
-If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
+### Namit Jain
+
+Namit Jain contributed to the following sections:
+- HelloController
+- GameController
+- GameOverScreenController
+- HelpScreenController
+- AvatarController
+- Gallery
+
+### Pranav Tanwar
+
+Pranav Tanwar contributed to the following sections:
+- Stick Hero Game Class
+- Stick Create Class
+- StickHeroGameTest
+- Sound Management
+- Hero Class
+
 
 
 ### Github Link
