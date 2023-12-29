@@ -174,7 +174,7 @@ Namit Jain contributed to the following sections:
 
 ### Github Link
 
-[https://github.com/namit22315/2022315_2022368.git]https://github.com/namit22315/STICKHERO.git
+https://github.com/namit22315/STICKHERO.git
 
 
 ### Acknowledgments
