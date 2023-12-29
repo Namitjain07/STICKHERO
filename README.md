@@ -164,10 +164,6 @@ Namit Jain contributed to the following sections:
 - HelpScreenController
 - AvatarController
 - Gallery
-
-### Pranav Tanwar
-
-Pranav Tanwar contributed to the following sections:
 - Stick Hero Game Class
 - Stick Create Class
 - StickHeroGameTest
@@ -178,7 +174,7 @@ Pranav Tanwar contributed to the following sections:
 
 ### Github Link
 
-https://github.com/namit22315/2022315_2022368.git
+[https://github.com/namit22315/2022315_2022368.git]https://github.com/namit22315/STICKHERO.git
 
 
 ### Acknowledgments
