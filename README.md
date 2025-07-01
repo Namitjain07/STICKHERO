@@ -1,182 +1,173 @@
-# StickHero Game and Test Suite
+Here’s your updated and polished README with a **video demo link section** included. You can replace the placeholder link with your actual video URL (e.g., YouTube, Google Drive, Loom, etc.).
 
-## Introduction
+---
 
-Welcome to Stick Hero, an exciting JavaFX game with an integrated test suite. This comprehensive document provides in-depth insights into the game's architecture, controllers, functionalities, and details on the test suite ensuring the reliability of the StickHeroGame class.
+# Stick Hero — JavaFX Game
 
-This Java package, `com.example.stickhero`, combines a thrilling gaming experience and a robust test suite for optimal development and testing practices.
+## 🕹️ Introduction
 
-## Table of Contents
+**Stick Hero** is an engaging and skill-based JavaFX game where players help a hero cross gaps between platforms using a precisely grown stick. It challenges timing, judgment, and fast reflexes — perfect for casual gamers who enjoy simple mechanics with tricky execution.
 
-1. [Stick Hero Game](#stick-hero-game)
-    - [Introduction](#introduction-1)
-    - [Game Overview](#game-overview-1)
-    - [Controllers](#controllers-1)
-        - [HelloController](#hellocontroller)
-        - [GameController](#gamecontroller)
-        - [GameOverScreenController](#gameoverscreencontroller)
-        - [HelpScreenController](#helpscreencontroller)
-        - [AvatarController - Implements Flyweight](#avatarcontroller---implements-flyweight)
-        - [GalleryScreenController](#galleryscreencontroller)
-    - [Game Logic](#game-logic-1)
-        - [Stick Hero Game Class](#stick-hero-game-class)
-        - [Stick Create Class](#stick-create-class)
-    - [Testing](#testing-1)
-        - [StickHeroGameTest](#stickherogametest)
-    - [Sound Management](#sound-management)
-    - [Hero Class](#hero-class)
+This repository contains all the source code and architecture details for the game under the Java package `com.example.stickhero`.
 
-2. [StickHero Test Suite](#stickhero-test-suite)
-    - [Getting Started](#getting-started)
-        - [Prerequisites](#prerequisites)
-        - [Installation](#installation)
-    - [Running Tests](#running-tests)
-        - [TestRunner Class](#testrunner-class)
-            - [Run the Tests](#run-the-tests)
-        - [Test Results](#test-results)
-    - [Test Classes](#test-classes)
-        - [StickHeroGameTest](#stickherogametest-1)
-    - [Contributing](#contributing)
-    - [License](#license)
-    - [Acknowledgments](#acknowledgments)
+---
 
-## Stick Hero Game
+## 📽️ Demo Video
 
-### Introduction
+🎬 **Watch the Game in Action:**
+[👉 Click here to view the demo](https://example.com/your-demo-link)
 
-Stick Hero is a game where the player controls a character who needs to cross platforms by extending a stick. The game challenges the player's timing and precision skills.
 
-### Game Overview
+---
 
-The game consists of different screens:
+## 📚 Table of Contents
 
-- **Hello Screen:** The initial screen that provides options to start the game, view the help screen, or exit.
+* [Game Overview](#game-overview)
+* [Screens & Controllers](#screens--controllers)
 
-- **Game Screen:** The main gameplay screen where the player extends the stick and moves across platforms.
+  * [HelloController](#hellocontroller)
+  * [GameController](#gamecontroller)
+  * [GameOverScreenController](#gameoverscreencontroller)
+  * [HelpScreenController](#helpscreencontroller)
+  * [AvatarController (Flyweight)](#avatarcontroller-flyweight)
+  * [GalleryScreenController](#galleryscreencontroller)
+* [Core Game Logic](#core-game-logic)
 
-- **Game Over Screen:** Displayed when the game ends, showing the player's score and options to restart or return home.
+  * [StickHeroGame](#stickherogame)
+  * [StickCreate (Runnable)](#stickcreate-runnable)
+* [Game Features](#game-features)
 
-- **Help Screen:** Provides information on how to play the game.
+  * [Sound Management](#sound-management)
+  * [Hero (Singleton)](#hero-singleton)
+* [Getting Started](#getting-started)
+* [Contributing](#contributing)
+* [GitHub Repository](#github-repository)
+* [Acknowledgments](#acknowledgments)
 
-- **Gallery Screen:** Allows the player to select background images from a gallery.
+---
 
-### Controllers
+## 🧩 Game Overview
 
-#### HelloController
+In **Stick Hero**, players tap to grow a stick, aiming to bridge the gap between two platforms. Release at the right moment to let the stick fall — if it reaches the next platform, your hero walks across; miss it, and the game ends!
 
-Controls the Hello Screen and handles user actions.
+The game includes:
 
-#### GameController
+* Multiple screens for navigation
+* Background and avatar customization
+* Clean JavaFX architecture with design patterns (Flyweight, Singleton)
 
-Manages the main gameplay screen and user interactions during the game.
+---
 
-#### GameOverScreenController
+## 🎮 Screens & Controllers
 
-Handles the Game Over Screen, displaying the final score and providing options to restart or return home.
+### HelloController
 
-#### HelpScreenController
+Manages the main menu screen with options to start, view help, or exit.
 
-Manages the Help Screen, providing information on how to play the game.
+### GameController
 
-#### AvatarController - Implements Flyweight
+Core controller that handles gameplay logic, stick mechanics, and transitions.
 
-Controls the Avatar selection screen, allowing the player to choose an avatar. Implements the flyweight design pattern for efficient image loading, minimizing memory usage.
+### GameOverScreenController
 
-#### GalleryScreenController
+Displays the final score and options to restart or return to the main menu.
 
-Manages the Gallery Screen, allowing the player to select background images from a gallery.
+### HelpScreenController
 
-### Game Logic
+Provides gameplay instructions and tips.
 
-#### Stick Hero Game Class
+### AvatarController (Flyweight)
 
-The `stick_hero_game` class encapsulates the game logic. It handles stick growth, rotation, platform generation, scoring, and transitions between game states.
+Manages avatar selection using the **Flyweight pattern** to efficiently load and reuse image resources.
 
-#### Stick Create Class
+### GalleryScreenController
 
-The `stick_create` class, implemented as a Runnable, manages stick animation properties such as length, position, and rotation. It runs in a separate thread.
+Allows players to customize their background by selecting from a gallery of images.
 
-### Testing
+---
 
-#### StickHeroGameTest
+## 🧠 Core Game Logic
 
-Includes JUnit tests to verify the functionality of Stick Hero game components.
+### StickHeroGame
+
+Handles the central game logic including:
+
+* Stick growth and rotation
+* Platform generation
+* Score tracking
+* State transitions
+
+### StickCreate (Runnable)
+
+A threaded class that controls how the stick grows and animates. Runs separately for smooth UI updates.
+
+---
+
+## 🔊 Game Features
 
 ### Sound Management
 
-Sound effects are managed using the sound class, providing audio feedback during gameplay.
+Integrates sound effects for enhanced feedback and immersion.
 
-### Hero Class
+### Hero (Singleton)
 
-The `hero` class represents the game character. It ensures that only one instance of the hero exists by incorporating the singleton design pattern and manages its position, movement, and state.
+Implements the **Singleton pattern** to ensure only one instance of the hero character exists. Manages position, state, and animations.
 
-## StickHero Test Suite
+---
 
-### Getting Started
+## 🚀 Getting Started
 
-#### Prerequisites
+### Prerequisites
 
-- Java Development Kit (JDK) installed on your machine.
+* Java Development Kit (JDK 8 or later)
+* JavaFX SDK
+* Maven (optional, if using Maven to run)
 
-#### Installation
+### Run the Game
 
-1. Clone the repository to your local machine.
-   ```bash
-   git clone https://github.com/example/stickhero.git
-   ```
-2. Navigate to the project directory.
-   ```bash
-   cd stickhero
-   ```
+Clone the repository:
 
-### Running Tests
+```bash
+git clone https://github.com/namit22315/STICKHERO.git
+cd stickhero
+```
 
-#### TestRunner Class
+Then run:
 
-The `TestRunner` class serves as the entry point for executing the test suite. It uses JUnitCore to run the test cases defined in `StickHeroGameTest.class`.
-
-##### Run the Tests
-
-Execute the following commands run the code:
 ```bash
 mvn clean
 mvn javafx:run
 ```
 
-#### Test Results
+Alternatively, open the project in an IDE like IntelliJ or Eclipse and run the main JavaFX application.
 
-After running the tests, the `TestRunner` will print the results to the console. Any failures encountered during the test will be displayed, along with an indication of whether the overall test suite was successful.
+---
 
-### Test Classes
+## 🤝 Contributing
 
-#### StickHeroGameTest
+### Developed by Namit Jain
 
-The `StickHeroGameTest` class contains the test cases for the StickHeroGame class. These tests cover various scenarios to ensure the game functions correctly and handles different inputs appropriately.
+Contributions:
 
-### Contributing
+* UI Controllers (Hello, Game, GameOver, Help, Avatar, Gallery)
+* Game Logic (StickHeroGame, StickCreate)
+* Sound Effects
+* Hero Character (Singleton Pattern)
 
-### Namit Jain
+---
 
-Namit Jain contributed to the following sections:
-- HelloController
-- GameController
-- GameOverScreenController
-- HelpScreenController
-- AvatarController
-- Gallery
-- Stick Hero Game Class
-- Stick Create Class
-- StickHeroGameTest
-- Sound Management
-- Hero Class
+## 🔗 GitHub Repository
 
+Browse the full project here:
+[https://github.com/namit22315/STICKHERO.git](https://github.com/namit22315/STICKHERO.git)
 
+---
 
-### Github Link
+## 🙏 Acknowledgments
 
-https://github.com/namit22315/STICKHERO.git
+* JavaFX for providing the UI framework.
+* JUnit (originally used for testing) for inspiring good development practices.
 
+---
 
-### Acknowledgments
-
-- This test suite uses JUnit for testing. Visit [JUnit](https://junit.org/junit5/) for more information on the JUnit testing framework.
+Let me know the **actual video URL** and I’ll insert it properly for you!
