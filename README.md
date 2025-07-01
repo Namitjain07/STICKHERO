@@ -1,173 +1,189 @@
-Here’s your updated and polished README with a **video demo link section** included. You can replace the placeholder link with your actual video URL (e.g., YouTube, Google Drive, Loom, etc.).
+Here’s the **complete and polished README** for your JavaFX Stick Hero game, now including a **demo video section** and **screenshots**. Just make sure to upload your screenshots to a `screenshots/` folder in your repo and update the demo video link.
 
 ---
 
-# Stick Hero — JavaFX Game
+# 🎮 Stick Hero — JavaFX Game
 
 ## 🕹️ Introduction
 
-**Stick Hero** is an engaging and skill-based JavaFX game where players help a hero cross gaps between platforms using a precisely grown stick. It challenges timing, judgment, and fast reflexes — perfect for casual gamers who enjoy simple mechanics with tricky execution.
-
-This repository contains all the source code and architecture details for the game under the Java package `com.example.stickhero`.
+**Stick Hero** is a fun and addictive JavaFX game that tests your timing and reflexes. Grow the stick just right to help your hero cross from one platform to another — too short or too long, and you fall! Designed with clean architecture and popular design patterns (Singleton, Flyweight), this game offers both a great user experience and well-structured code for learners and contributors.
 
 ---
 
 ## 📽️ Demo Video
 
 🎬 **Watch the Game in Action:**
+
 [👉 Click here to view the demo](https://example.com/your-demo-link)
 
+---
+
+## 📸 Screenshots
+
+| Main Menu                               | Gameplay                              | Game Over                               | Avatar Selection                                      | Background Gallery                                        |
+| --------------------------------------- | ------------------------------------- | --------------------------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
+| ![Main Menu](screenshots/main_menu.png) | ![Gameplay](screenshots/gameplay.png) | ![Game Over](screenshots/game_over.png) | ![Avatar Selection](screenshots/avatar_selection.png) | ![Background Gallery](screenshots/background_gallery.png) |
+
+> 📁 **Note:** Ensure the screenshots are located in a `screenshots/` folder within your repository.
 
 ---
 
 ## 📚 Table of Contents
 
-* [Game Overview](#game-overview)
-* [Screens & Controllers](#screens--controllers)
-
-  * [HelloController](#hellocontroller)
-  * [GameController](#gamecontroller)
-  * [GameOverScreenController](#gameoverscreencontroller)
-  * [HelpScreenController](#helpscreencontroller)
-  * [AvatarController (Flyweight)](#avatarcontroller-flyweight)
-  * [GalleryScreenController](#galleryscreencontroller)
-* [Core Game Logic](#core-game-logic)
-
-  * [StickHeroGame](#stickherogame)
-  * [StickCreate (Runnable)](#stickcreate-runnable)
-* [Game Features](#game-features)
-
-  * [Sound Management](#sound-management)
-  * [Hero (Singleton)](#hero-singleton)
-* [Getting Started](#getting-started)
-* [Contributing](#contributing)
-* [GitHub Repository](#github-repository)
-* [Acknowledgments](#acknowledgments)
+* [Game Overview](#-game-overview)
+* [Screens & Controllers](#-screens--controllers)
+* [Core Game Logic](#-core-game-logic)
+* [Game Features](#-game-features)
+* [Getting Started](#-getting-started)
+* [Contributing](#-contributing)
+* [GitHub Repository](#-github-repository)
+* [Acknowledgments](#-acknowledgments)
 
 ---
 
 ## 🧩 Game Overview
 
-In **Stick Hero**, players tap to grow a stick, aiming to bridge the gap between two platforms. Release at the right moment to let the stick fall — if it reaches the next platform, your hero walks across; miss it, and the game ends!
+In **Stick Hero**, players tap and hold to grow a stick and release to let it fall across a gap between platforms. If it lands correctly, the hero walks across and the game continues. If not, it’s game over!
 
-The game includes:
+### Highlights:
 
-* Multiple screens for navigation
-* Background and avatar customization
-* Clean JavaFX architecture with design patterns (Flyweight, Singleton)
+* Clean JavaFX architecture
+* Avatar & background customization
+* Use of key design patterns (Flyweight, Singleton)
+* Sound effects for immersion
 
 ---
 
 ## 🎮 Screens & Controllers
 
-### HelloController
+### ✅ HelloController
 
-Manages the main menu screen with options to start, view help, or exit.
+Manages the **main menu** with options to start the game, view help, or exit.
 
-### GameController
+### ✅ GameController
 
-Core controller that handles gameplay logic, stick mechanics, and transitions.
+Handles all **gameplay logic**, stick growth, collisions, transitions, and animations.
 
-### GameOverScreenController
+### ✅ GameOverScreenController
 
-Displays the final score and options to restart or return to the main menu.
+Shows final **score**, and offers options to **restart** or **go to main menu**.
 
-### HelpScreenController
+### ✅ HelpScreenController
 
-Provides gameplay instructions and tips.
+Displays **instructions** and **tips** to play the game effectively.
 
-### AvatarController (Flyweight)
+### ✅ AvatarController (Flyweight Pattern)
 
-Manages avatar selection using the **Flyweight pattern** to efficiently load and reuse image resources.
+Efficiently loads and reuses avatar images using the **Flyweight design pattern**.
 
-### GalleryScreenController
+### ✅ GalleryScreenController
 
-Allows players to customize their background by selecting from a gallery of images.
+Lets players **customize background themes** by selecting images from a **gallery**.
 
 ---
 
 ## 🧠 Core Game Logic
 
-### StickHeroGame
+### 🔁 StickHeroGame
 
-Handles the central game logic including:
+Core class managing:
 
-* Stick growth and rotation
 * Platform generation
-* Score tracking
+* Stick creation and rotation
+* Hero movement
+* Score updates
 * State transitions
 
-### StickCreate (Runnable)
+### 🪵 StickCreate (Runnable)
 
-A threaded class that controls how the stick grows and animates. Runs separately for smooth UI updates.
+A separate thread for stick growth animation, ensuring smooth rendering while keeping UI responsive.
 
 ---
 
 ## 🔊 Game Features
 
-### Sound Management
+### 🔈 Sound Management
 
-Integrates sound effects for enhanced feedback and immersion.
+Plays sound effects for:
 
-### Hero (Singleton)
+* Stick drop
+* Hero movement
+* Game over events
 
-Implements the **Singleton pattern** to ensure only one instance of the hero character exists. Manages position, state, and animations.
+### 🧍 Hero (Singleton Pattern)
+
+Implements the **Singleton pattern** to ensure a single instance of the hero. Manages:
+
+* Character state
+* Position tracking
+* Movement animations
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 📦 Prerequisites
 
-* Java Development Kit (JDK 8 or later)
-* JavaFX SDK
-* Maven (optional, if using Maven to run)
+* Java JDK 8 or later
+* JavaFX SDK (if not bundled with JDK)
+* Maven (optional)
 
-### Run the Game
+### ▶️ Run the Game
 
-Clone the repository:
+1. **Clone the repo**:
 
-```bash
-git clone https://github.com/namit22315/STICKHERO.git
-cd stickhero
-```
+   ```bash
+   git clone https://github.com/namit22315/STICKHERO.git
+   cd STICKHERO
+   ```
 
-Then run:
+2. **Run with Maven**:
 
-```bash
-mvn clean
-mvn javafx:run
-```
+   ```bash
+   mvn clean
+   mvn javafx:run
+   ```
 
-Alternatively, open the project in an IDE like IntelliJ or Eclipse and run the main JavaFX application.
+3. **Or open in an IDE** (IntelliJ, Eclipse):
+
+   * Import project
+   * Set JavaFX VM options if needed
+   * Run the main class
 
 ---
 
 ## 🤝 Contributing
 
-### Developed by Namit Jain
+### 🧑‍💻 Developed by: **Namit Jain**
 
-Contributions:
+**Contributions:**
 
-* UI Controllers (Hello, Game, GameOver, Help, Avatar, Gallery)
-* Game Logic (StickHeroGame, StickCreate)
-* Sound Effects
-* Hero Character (Singleton Pattern)
+* JavaFX UI Design (Menus, Help, Gallery, Game Over)
+* Avatar & Background Customization
+* Core Game Logic (Stick, Hero, Gameplay)
+* Sound Effects Integration
+* Singleton & Flyweight Design Patterns
 
 ---
 
 ## 🔗 GitHub Repository
 
-Browse the full project here:
-[https://github.com/namit22315/STICKHERO.git](https://github.com/namit22315/STICKHERO.git)
+🔍 Explore the codebase, raise issues, and contribute:
+[https://github.com/namit22315/STICKHERO.git](https://github.com/Namitjain07/STICKHERO.git)
 
 ---
 
 ## 🙏 Acknowledgments
 
-* JavaFX for providing the UI framework.
-* JUnit (originally used for testing) for inspiring good development practices.
+* **JavaFX** — for the smooth GUI framework.
+* **JUnit** — for testing inspiration.
+* **YouTube tutorials & GitHub communities** — for early game dev guidance.
 
 ---
 
-Let me know the **actual video URL** and I’ll insert it properly for you!
+Let me know when you're ready to:
+
+* Insert the **actual video link**
+* Add the **real screenshots** (or share them with me here so I can name them and match them in the README)
+
+Would you also like a `LICENSE` or `CONTRIBUTING.md` added to the repo?
