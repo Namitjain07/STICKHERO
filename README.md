@@ -1,7 +1,3 @@
-Here’s the **complete and polished README** for your JavaFX Stick Hero game, now including a **demo video section** and **screenshots**. Just make sure to upload your screenshots to a `screenshots/` folder in your repo and update the demo video link.
-
----
-
 # 🎮 Stick Hero — JavaFX Game
 
 ## 🕹️ Introduction
