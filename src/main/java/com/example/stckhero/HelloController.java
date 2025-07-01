@@ -53,8 +53,9 @@ public class HelloController {
         Image avatarbuttonImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("Stick_hero_static3.png")));
         ImageView avatarimageView = new ImageView(avatarbuttonImage);
         Avatarselect.setGraphic(avatarimageView);
-
-
+        
+        // Start playing background music
+        HelloApplication.NewSound.playBackgroundMusic();
     }
 
     @FXML
@@ -70,11 +71,13 @@ public class HelloController {
             ImageView soundimageView1 = new ImageView(soundbuttonImage1);
             circularButton.setGraphic(soundimageView1);
             mutebuttonstate=true;
+            HelloApplication.NewSound.muteAll(); // Mute all sounds including background
         } else {
             Image soundbuttonImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("SOUND_ON.png")));
             ImageView soundimageView = new ImageView(soundbuttonImage);
             circularButton.setGraphic(soundimageView);
             mutebuttonstate=false;
+            HelloApplication.NewSound.unmuteAll(); // Unmute all sounds
         }
     }
     @FXML

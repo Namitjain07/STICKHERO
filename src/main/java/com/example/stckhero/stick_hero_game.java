@@ -170,7 +170,7 @@ public class stick_hero_game {
             });
 
             primaryStage.setScene(scene);
-            TestPillarGeneration();
+            // TestPillarGeneration();
 
 
         }
@@ -271,9 +271,9 @@ public class stick_hero_game {
     public void ninja_moving(Rectangle rectangle) throws IOException {
         HelloApplication.NewSound.setHitSound(false);
 
-        System.out.println("Stick Length check:   "+  stickLength+rectangle1.getX());
-        System.out.println("rectangle coord:  "+(rectangle2.getX() - 100));
-        if (stickLength+rectangle1.getX() < rectangle2.getX() - 100 || stickLength+rectangle1.getX()>rectangle2.getX()+rectangle2.getWidth()-100) {
+        System.out.println("Stick Length check:   "+  (stickLength+stick1.getX()));
+        System.out.println("rectangle coord:  "+(rectangle2.getX()));
+        if (stickLength + stick1.getX() < rectangle2.getX() || stickLength + stick1.getX() > rectangle2.getX() + rectangle2.getWidth()) {
             System.out.println("i am in ninja moving");
             double speed = 100;
             double durationInSeconds = stickLength / speed;
@@ -287,27 +287,37 @@ public class stick_hero_game {
             translateTransition.play();
 
         }
-        else if(stickLength+rectangle1.getX()<=rectangle2.getX()+rectangle2.getWidth()-100){
+        else if(stickLength+stick1.getX()>=rectangle2.getX() && stickLength+stick1.getX()<=rectangle2.getX()+rectangle2.getWidth()){
             HelloApplication.NewSound.setWalk_Sound(true);
             double speed = 100;
-            double durationInSeconds = (rectangle2.getX() + rectangle2.getWidth()) / speed;
+            double destinationX = rectangle2.getX() + rectangle2.getWidth() - HeroImageView.getImage().getWidth() - 5;
+            double distance = destinationX - (HeroImageView.getX() + HeroImageView.getTranslateX());
+            double durationInSeconds = distance / speed;
 
-            KeyValue keyValue = new KeyValue(HeroImageView.translateXProperty(), rectangle2.getX() + rectangle2.getWidth() - 100 - rectangle1.getX());
+            KeyValue keyValue = new KeyValue(HeroImageView.xProperty(), destinationX);
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(durationInSeconds), keyValue);
 
             Timeline timeline = new Timeline(keyFrame);
-            timeline.setCycleCount(Animation.INDEFINITE);
+            timeline.setCycleCount(1);
             System.out.println("Stick Length: "+stickLength);
             System.out.println("rectangle width: "+rectangle2.getWidth());
             TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(durationInSeconds), HeroImageView);
-            translateTransition.setToX(rectangle2.getX()+rectangle2.getWidth()-100-rectangle1.getX() );
+            translateTransition.setByX(distance);
 
-            AtomicBoolean cherry_flag= new AtomicBoolean(false);
+            AtomicBoolean cherryCollected = new AtomicBoolean(false);
+            HeroImageView.translateXProperty().addListener((obs, oldVal, newVal) -> {
+                if (!cherryCollected.get() && cherryImageView.getParent() != null && HeroImageView.getBoundsInParent().intersects(cherryImageView.getBoundsInParent())) {
+                    cherryCollected.set(true);
+                    rootPane.getChildren().remove(cherryImageView);
+                    cherry_collected++;
+                    cherryText.setText(String.valueOf(cherry_collected));
+                    HelloApplication.NewSound.playCherrySound();
+                }
+            });
+
             translateTransition.setOnFinished(actionEvent -> {
-                cherry_flag.set(true);
                 HelloApplication.NewSound.setWalk_Sound(false);
-                rootPane.getChildren().remove(cherryImageView);
-                 // Check for cherry collection after the player moves
+                // Check for cherry collection after the player moves
                 next_block_transition(rectangle2);
             });
 
@@ -333,18 +343,18 @@ public class stick_hero_game {
         if(current_score>HelloApplication.global_score){
             HelloApplication.global_score=current_score;
         }
-        double diff=-rectangle2.getX()-rectangle2.getWidth()+rectangle1.getWidth()+rectangle1.getX();
+        double diff = -rectangle2.getX() + rectangle1.getWidth();
         System.out.println("-----------------\n------------------");
         System.out.println(diff);
         System.out.println("-----------------\n------------------");
         TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(2), HeroImageView);
-        translateTransition1.setToX(0);
+        translateTransition1.setByX(diff);
         TranslateTransition translateTransition2 = new TranslateTransition(Duration.seconds(2), rectangle2 );
         translateTransition2.setByX(diff);
         TranslateTransition translateTransition3 = new TranslateTransition(Duration.seconds(2), stick1 );
-        translateTransition3.setByX(diff-100);
+        translateTransition3.setByX(diff);
         TranslateTransition translateTransition4 = new TranslateTransition(Duration.seconds(2),rectangle1);
-        translateTransition4.setByX(diff-100);
+        translateTransition4.setByX(diff);
 //        Timeline timeline = new Timeline();
 //
 //        for (int i = 0; i < 20; i++) {
@@ -389,42 +399,54 @@ public class stick_hero_game {
 
     }
     public void next_scene_creation(){
-        rectangle1.setX(rectangle2.getX()+100);
-        rectangle1.setY(rectangle2.getY());
-        rectangle1.setHeight(rectangle2.getHeight());
+        double oldRect1Width = rectangle1.getWidth();
         rectangle1.setWidth(rectangle2.getWidth());
+        rectangle1.setX(0);
+        rectangle1.setTranslateX(0);
+        rectangle1.setTranslateY(0);
 
-        rectangle1.setFill(rectangle2.getFill());
+        rectangle2.setTranslateX(0);
+        rectangle2.setTranslateY(0);
+
+        HeroImageView.setX(40);
+        HeroImageView.setTranslateX(0);
+        HeroImageView.setTranslateY(0);
+
+        stick1.setTranslateX(0);
+        stick1.setTranslateY(0);
+
 
         PIllars pil_next=create_pillars();
         rectangle3=pil_next.getRectangle();
-        System.out.println("platform x: "+rectangle3.getX());
-        rectangle2.setX(rectangle3.getX()+rectangle1.getX()+100);
+        // Ensure the new pillar is not too close
+        double newX = Math.max(rectangle3.getX(), rectangle1.getWidth() + 50);
+        System.out.println("platform x: "+newX);
+        rectangle2.setX(newX);
         rectangle2.setY(rectangle3.getY());
         rectangle2.setHeight(rectangle3.getHeight());
         rectangle2.setWidth(rectangle3.getWidth());
         rectangle2.setFill(rectangle3.getFill());
         cherryImageView=new ImageView(cherryImage);
-        //cherryImageView.setX(Random_X_Position(rectangle1.getX()+rectangle1.getWidth(),rectangle2.getX()-rectangle2.getWidth()));
+        if (rectangle2.getX() > rectangle1.getWidth()) {
+            cherryImageView.setX(Random_X_Position(rectangle1.getWidth(), rectangle2.getX()));
+        } else {
+            cherryImageView.setX(rectangle1.getWidth() + 10); // Default position if space is too small
+        }
         cherryImageView.setY(560);
         rootPane.getChildren().add(cherryImageView);
-        Rotate r = new Rotate();
-        r.setAngle(270);
-        r.setPivotX(stick1.getX());
-        r.setPivotY(stick1.getY() + stickLength);
-        stick2=new Rectangle(5,1000);
-        stick1.setX(rectangle1.getX()+rectangle1.getWidth()-5);
+        rootPane.getChildren().remove(stick1);
+        stick1 = new Rectangle(5,1000);
+        stick1.setX(rectangle1.getWidth() - 10);
         stick1.setY(595);
-        stick1.setHeight(stick2.getHeight());
-        stick1.setWidth(stick2.getWidth());
+        rootPane.getChildren().add(stick1);
 
-        stick1.getTransforms().add(r);
         stickLength=0;
         stickY=595;
 //        stick1.setY(stickY);
 
         stickgrowing_flag=false;
         stick_rotating_flag=false;
+        flag=false;
 
 //        stick1.setX(90);
 //        scene.setOnKeyPressed(event -> {
@@ -453,6 +475,7 @@ public class stick_hero_game {
         gameflag=true;
         stickLength=0;
         stickY=595;
+        current_score=0;
         FXMLLoader gameover=new FXMLLoader(getClass().getResource("game_over_screen.fxml"));
         Scene game_over=new Scene(gameover.load(),800,800);
         primaryStage.setScene(game_over);

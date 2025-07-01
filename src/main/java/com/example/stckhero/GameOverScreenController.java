@@ -78,31 +78,28 @@ public class GameOverScreenController {
         restartButton.setGraphic(restartimageView);
         Image cherryimage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("cherry.png")));
         cherryImage.setImage(cherryimage);
+
+        // Pause background music and play game over sound if needed
+        HelloApplication.NewSound.pauseBackgroundMusic();
     }
 
     @FXML
-    protected void onRestartButtonClick() throws IOException {
-        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("game_screen.fxml"));
-        Scene scene11 = new Scene(fxmlLoader1.load(), 800, 800);
-//        Stage str= HelloApplication.primaryStage;
-        Stage rdf1 = HelloApplication.primaryStage;
-        rdf1.setScene(scene11);
+    protected void onRestartButtonClick() throws IOException, InterruptedException {
+        // Resume background music before transitioning to game screen
+        HelloApplication.NewSound.playBackgroundMusic();
+        HelloApplication.init_stick_hero.initialise_game(1);
         System.out.println("restart");
     }
+
     @FXML
     protected void onHomeButtonClick() throws IOException {
+        // Resume background music before transitioning to home screen
+        HelloApplication.NewSound.playBackgroundMusic();
+
         FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("hello-view.fxml"));
         Scene scene11 = new Scene(fxmlLoader1.load(), 800, 800);
-//        Stage str= HelloApplication.primaryStage;
         Stage rdf1 = HelloApplication.primaryStage;
         rdf1.setScene(scene11);
         System.out.println("Home");
     }
-
-
-
-
-
-
-
 }

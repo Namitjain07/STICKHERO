@@ -95,8 +95,10 @@ public static int global_score=0;
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);
         primaryStage.show();
-        HelloApplication.primaryStage =primaryStage;
-
+        HelloApplication.primaryStage = primaryStage;
+        
+        // Initialize background music
+        NewSound.playBackgroundMusic();
     }
     public Stage getPrimaryStage(){
         return primaryStage;
