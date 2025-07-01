@@ -180,10 +180,3 @@ Implements the **Singleton pattern** to ensure a single instance of the hero. Ma
 * **YouTube tutorials & GitHub communities** — for early game dev guidance.
 
 ---
-
-Let me know when you're ready to:
-
-* Insert the **actual video link**
-* Add the **real screenshots** (or share them with me here so I can name them and match them in the README)
-
-Would you also like a `LICENSE` or `CONTRIBUTING.md` added to the repo?
