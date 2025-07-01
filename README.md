@@ -14,7 +14,7 @@ Here’s the **complete and polished README** for your JavaFX Stick Hero game, n
 
 🎬 **Watch the Game in Action:**
 
-[👉 Click here to view the demo](https://example.com/your-demo-link)
+[👉 Click here to view the demo](https://youtu.be/xhWDfI03awE)
 
 ---
 
